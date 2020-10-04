@@ -6,8 +6,8 @@ import Team from './Components/Team';
 
 function App() {
   const [form, setForm] = useState({
-    name: 'William',
-    email: 'wbjensen01@gmail.com',
+    name: '',
+    email: '',
     role: '',
   });
   const [team, setTeam] = useState([]);
