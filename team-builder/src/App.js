@@ -1,24 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Form from './Components/Form';
+import Team from './Components/Team';
 
 function App() {
+  const [form, setForm] = useState({
+    name: 'William',
+    email: 'wbjensen01@gmail.com',
+    role: '',
+  });
+  const [team, setTeam] = useState([]);
+
+  const updateForm = (newName, newValue) => {
+    setForm({...form, [newName]: newValue});
+  };
+
+  const submitForm = () => {
+    const newMember = {
+      name: form.name,
+      email: form.email,
+      role: form.role
+    };
+    setTeam([...team, newMember]);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Team Builder</h1>
+      <Form values={form} update={updateForm} submit={submitForm} />
+      <Team team={team} />
+
     </div>
   );
 }
